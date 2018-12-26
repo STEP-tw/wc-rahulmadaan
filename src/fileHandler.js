@@ -1,15 +1,16 @@
-class FileHandler {
-
-    constructor(fileName,fs) {
-        this.fileName = fileName;
-        this.fs=fs;
-    };
-   readFile() {
-       const ENCODING = "utf8";
-       return this.fs.readFileSync(this.fileName,ENCODING); 
-   };
-   isExists() {
-        return this.fs.existsSync(this.fileName);
-   };
+const fileHandler = function (fileName, fs) {
+    const isExists = isExists(fileName, fs);
+    const contents = readFile(fileName, fs);
+    return { isExists, contents };
+}
+const readFile = function (fileName, fs) {
+    const ENCODING = "utf8";
+    return fs.readFileSync(fileName, ENCODING);
 };
-exports.FileHandler=FileHandler;
+const isExists = function (fileName, fs) {
+    return fs.existsSync(fileName);
+};
+
+module.exports = {
+    fileHandler
+}
