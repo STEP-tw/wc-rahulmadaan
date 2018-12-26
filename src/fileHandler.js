@@ -1,7 +1,7 @@
 const fileHandler = function (fileName, fs) {
-    const isExists = isExists(fileName, fs);
+    const isFileExists = isExists(fileName, fs);
     const contents = readFile(fileName, fs);
-    return { isExists, contents };
+    return { isFileExists, contents };
 }
 const readFile = function (fileName, fs) {
     const ENCODING = "utf8";
