@@ -1,7 +1,7 @@
 const { fileHandler } = require('./fileHandler.js');
 const { getCount } = require('./getCount.js');
+//const {parseInput} = require('./parseInput.js');
 const TAB = "\t";
-//const { fileHandler } = require('./fileHandler.js');
 
 const getDetails = function (fileName, fs) {
     const fileDetails = fileHandler(fileName, fs);
@@ -13,13 +13,23 @@ const getDetails = function (fileName, fs) {
     const wordCount = counts.wordCount;
     const byteCount = counts.byteCount;
     const lineCount = counts.lineCount;
-    return {contents, wordCount, byteCount, lineCount };
+    return { contents, wordCount, byteCount, lineCount };
 };
 const formatter = function (counts, fileName) {
     const { lineCount, byteCount, wordCount } = counts;
-    return [TAB, lineCount,TAB, wordCount,TAB, byteCount].join('') +' '+ fileName;
+    return [TAB, lineCount, TAB, wordCount, TAB, byteCount].join('') + ' ' + fileName;
 };
+
+const wc = function (userArgs,fs) {
+   // const {option , fileNames } = parseInput(userArgs);
+    return formatter(getDetails(fileName,fs),fileName);
+ //   const data = [];
+ //   const { option, fileNames } = userArgs;
+
+
+}
+
+
 module.exports = {
-    formatter,
-    getDetails
+    wc
 };
