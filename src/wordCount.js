@@ -1,8 +1,7 @@
 class WordCount {
 
-    constructor(contents,fileName) {
+    constructor(contents) {
         this.contents = contents;
-        this.fileName=fileName;
     };
     getLineCount() {
         return this.contents.split('\n').length;
