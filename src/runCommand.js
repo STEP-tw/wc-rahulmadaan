@@ -1,5 +1,6 @@
 const { fileHandler } = require('./fileHandler.js');
 const { getCount } = require('./getCount.js');
+const TAB = "\t";
 //const { fileHandler } = require('./fileHandler.js');
 
 const getDetails = function (fileName, fs) {
@@ -16,7 +17,7 @@ const getDetails = function (fileName, fs) {
 };
 const formatter = function (counts, fileName) {
     const { lineCount, byteCount, wordCount } = counts;
-    return ['\t', lineCount,'\t', wordCount,'\t', byteCount,' '].join('') + fileName;
+    return [TAB, lineCount,TAB, wordCount,TAB, byteCount].join('') +' '+ fileName;
 };
 module.exports = {
     formatter,
