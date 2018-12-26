@@ -81,8 +81,23 @@ describe('parseInput', function () {
 });
 describe('wc', function () {
     it('should return line,byte and word count for single file name given as input', function () {
-        const actualOutput = wc('fifteenLines.txt', fs);
+        const actualOutput = wc(['fifteenLines.txt'], fs);
         const expectedOutput = '\t' + 14 + '\t' + 15 + '\t' + 35 + ' ' + 'fifteenLines.txt';
         assert.deepEqual(actualOutput, expectedOutput)
     });
-});
+    it('should return only line count if -l option is given input', function(){
+        const actualOutput= wc(['-l','fifteenLines.txt'],fs);
+        const expectedOutput = '\t' + 14 + ' ' + 'fifteenLines.txt'
+      assert.deepEqual(actualOutput, expectedOutput)
+    });
+    it('should return only word count if -w option is given input', function(){
+        const actualOutput= wc(['-w','fifteenLines.txt'],fs);
+        const expectedOutput = '\t' + 15 + ' ' + 'fifteenLines.txt'
+      assert.deepEqual(actualOutput, expectedOutput)
+    });
+    it('should return only line count if -l option is given input', function(){
+        const actualOutput= wc(['-c','fifteenLines.txt'],fs);
+        const expectedOutput = '\t' + 35 + ' ' + 'fifteenLines.txt'
+      assert.deepEqual(actualOutput, expectedOutput)
+    });
+ });
