@@ -55,7 +55,7 @@ describe('FileHandler', function () {
 describe('parseInput', function () {
     it('should return option and file name in object if both were given as input', function () {
         const actualOutput = parseInput(['-l', 'file1']);
-        const expectedOutput = { option: "-l", fileNames: ["file1"] }
+        const expectedOutput = { option: "l", fileNames: ["file1"] }
         assert.deepEqual(actualOutput, expectedOutput)
     });
     it('should return only file name if no option is given as input', function () {
@@ -70,7 +70,7 @@ describe('parseInput', function () {
     });
     it('should return parse multiple file names along with one option given in input', function () {
         const actualOutput = parseInput(["-l", 'file1', 'file2', 'file3', 'file4']);
-        const expectedOutput = { option: "-l", fileNames: ['file1', 'file2', 'file3', 'file4'] };
+        const expectedOutput = { option: "l", fileNames: ['file1', 'file2', 'file3', 'file4'] };
         assert.deepEqual(actualOutput, expectedOutput)
     });
     it('should return no option and fileNames if no input is given', function () {

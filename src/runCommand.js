@@ -23,28 +23,21 @@ const formatterForOneCounts = function (count, fileName) {
     return [TAB, count].join('') + ' ' + fileName;
 };
 const availableOptions = {
-    '-l': 'lineCount',
-    '-w': 'wordCount',
-    '-c': 'byteCount'
+    'l': 'lineCount',
+    'w': 'wordCount',
+    'c': 'byteCount'
 };
 const wc = function (userArgs, fs) {
-
     const input = parseInput(userArgs);
-    const fileName = input.fileNames;
-    const data = (getDetails(fileName.join(''), fs));
-    if (input.option == "-l") {
-        return formatterForOneCounts(data.lineCount, fileName);
-    }
-    if (input.option == "-w") {
-        return formatterForOneCounts(data.wordCount, fileName);
-    }
-    if (input.option == "-c") {
-        return formatterForOneCounts(data.byteCount, fileName);
-    }
+    const { option, fileNames } = input;
+    const data = (getDetails(fileNames.join(''), fs));
 
-    return formatter(getDetails(fileName.join(''), fs), fileName.join(''));
-}
-
+    if (input.option !== undefined) {
+        const inputOption = availableOptions[option];
+        return formatterForOneCounts(data[inputOption], fileNames);
+    }
+    return formatter(getDetails(fileNames.join(''), fs), fileNames.join(''));
+};
 
 module.exports = {
     wc
