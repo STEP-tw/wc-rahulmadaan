@@ -1,5 +1,6 @@
 const { getCount } = require('../src/getCount.js');
 const { fileHandler } = require('../src/fileHandler');
+const { parseInput } = require('../src/parseInput');
 const assert = require('assert');
 
 const fs = {};
@@ -36,8 +37,8 @@ describe('WordCount', function () {
 });
 
 describe('FileHandler', function () {
-    const existingFile = fileHandler("fifteenLines.txt",fs);
-    const missingFile = fileHandler('missing',fs);
+    const existingFile = fileHandler("fifteenLines.txt", fs);
+    const missingFile = fileHandler('missing', fs);
     const expectedOutput = files["fifteenLines.txt"];
 
     it('should return contents of file if file name is given', function () {
@@ -50,3 +51,32 @@ describe('FileHandler', function () {
         assert.deepEqual(missingFile.isFileExists, false)
     });
 });
+describe('parseInput', function () {
+    it('should return option and file name in object if both were given as input', function () {
+        const actualOutput = parseInput(['-l', 'file1']);
+        const expectedOutput = { option: "-l", fileNames: ["file1"] }
+        assert.deepEqual(actualOutput, expectedOutput)
+    });
+    it('should return only file name if no option is given as input', function () {
+        const actualOutput = parseInput(['file1']);
+        const expectedOutput = { option: undefined, fileNames: ['file1'] }
+        assert.deepEqual(actualOutput, expectedOutput)
+    });
+    it('should return multiple file names if multiple file names are given as input with no option', function () {
+        const actualOutput = parseInput(['file1', 'file2', 'file3']);
+        const expectedOutput = { option: undefined, fileNames: ['file1', 'file2', 'file3'] };
+        assert.deepEqual(actualOutput, expectedOutput)
+    });
+    it('should return parse multiple file names along with one option given in input', function () {
+        const actualOutput = parseInput(["-l", 'file1', 'file2', 'file3', 'file4']);
+        const expectedOutput = { option: "-l", fileNames: ['file1', 'file2', 'file3', 'file4'] };
+        assert.deepEqual(actualOutput, expectedOutput)
+    });
+    it('should return no option and fileNames if no input is given', function () {
+        const actualOutput = parseInput(['']);
+        const expectedOutput = { option: undefined, fileNames: [''] };
+        assert.deepEqual(actualOutput, expectedOutput);
+    });
+});
+
+
