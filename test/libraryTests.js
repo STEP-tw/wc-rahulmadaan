@@ -1,4 +1,4 @@
-const { getCount } = require('../src/wordCount.js');
+const { getCount } = require('../src/getCount.js');
 const { fileHandler } = require('../src/fileHandler');
 const assert = require('assert');
 
