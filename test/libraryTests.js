@@ -1,6 +1,7 @@
 const { getCount } = require('../src/getCount.js');
 const { fileHandler } = require('../src/fileHandler');
 const { parseInput } = require('../src/parseInput');
+const { wc } = require('../src/runCommand.js')
 const assert = require('assert');
 
 const fs = {};
@@ -78,5 +79,10 @@ describe('parseInput', function () {
         assert.deepEqual(actualOutput, expectedOutput);
     });
 });
-
-
+describe('wc', function () {
+    it('should return line,byte and word count for single file name given as input', function () {
+        const actualOutput = wc('fifteenLines.txt', fs);
+        const expectedOutput = '\t' + 14 + '\t' + 15 + '\t' + 35 + ' ' + 'fifteenLines.txt';
+        assert.deepEqual(actualOutput, expectedOutput)
+    });
+});

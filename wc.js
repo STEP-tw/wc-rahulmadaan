@@ -1,4 +1,4 @@
-const {getDetails,formatter,runCommand} = require('./src/runCommand.js');
+const {wc} = require('./src/runCommand.js');
 const fs = require('fs');
 
 const main = function() {

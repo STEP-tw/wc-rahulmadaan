@@ -20,13 +20,8 @@ const formatter = function (counts, fileName) {
     return [TAB, lineCount, TAB, wordCount, TAB, byteCount].join('') + ' ' + fileName;
 };
 
-const wc = function (userArgs,fs) {
-   // const {option , fileNames } = parseInput(userArgs);
-    return formatter(getDetails(fileName,fs),fileName);
- //   const data = [];
- //   const { option, fileNames } = userArgs;
-
-
+const wc = function (userArgs, fs) {
+    return formatter(getDetails(userArgs, fs), userArgs);
 }
 
 
