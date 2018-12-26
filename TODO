@@ -1,0 +1,7 @@
+
+Make WC work for default case: 
+    * wc file1
+    * Test for wc file1
+Make WC work for two files:
+    * wc file1 file2
+    * Tests for wc file1 file2

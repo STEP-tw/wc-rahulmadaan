@@ -16,7 +16,8 @@
     "url": "https://github.com/STEP-tw/wc-rahulmadaan/issues"
   },
   "homepage": "https://github.com/STEP-tw/wc-rahulmadaan#readme",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "mocha": "^5.2.0"
   }
 }
