@@ -25,7 +25,7 @@ fs.existsSync = function (path) {
 describe('WordCount', function () {
     const input = getCount(files["fifteenLines.txt"]);
     it('should return number of lines in the input file', function () {
-        assert.equal(input.lineCount, 15)
+        assert.equal(input.lineCount, 14)
     });
     it('should return number of words in the input file', function () {
         assert.equal(input.wordCount, 15)

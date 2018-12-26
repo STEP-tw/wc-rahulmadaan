@@ -1,9 +1,10 @@
 const { fileHandler } = require('./fileHandler.js');
 const { getCount } = require('./getCount.js');
-const {fileHandler} = require('./fileHandler.js');
+//const { fileHandler } = require('./fileHandler.js');
+
 const getDetails = function (fileName, fs) {
     const fileDetails = fileHandler(fileName, fs);
-    const counts = getCount(fileName);
+    const counts = getCount(fileDetails.contents);
     if (!fileDetails.isFileExists) {
         return 0;
     }
@@ -11,6 +12,13 @@ const getDetails = function (fileName, fs) {
     const wordCount = counts.wordCount;
     const byteCount = counts.byteCount;
     const lineCount = counts.lineCount;
-    return { contents, wordCount, byteCount, lineCount };
+    return {contents, wordCount, byteCount, lineCount };
 };
-exports.getDetails = getDetails;
+const formatter = function (counts, fileName) {
+    const { lineCount, byteCount, wordCount } = counts;
+    return ['\t', lineCount,'\t', wordCount,'\t', byteCount,' '].join('') + fileName;
+};
+module.exports = {
+    formatter,
+    getDetails
+};
