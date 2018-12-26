@@ -100,4 +100,25 @@ describe('wc', function () {
         const expectedOutput = '\t' + 35 + ' ' + 'fifteenLines.txt'
       assert.deepEqual(actualOutput, expectedOutput)
     });
+    it('should return only line count if -lcw option is given input', function(){
+        const actualOutput= wc(['-lcw','fifteenLines.txt'],fs);
+        const expectedOutput = '\t' + 14 + '\t' + 15 + '\t' + 35 + ' ' + 'fifteenLines.txt';
+      assert.deepEqual(actualOutput, expectedOutput)
+    });
+    it('should return only line count if -wlc option is given input', function(){
+        const actualOutput= wc(['-wlc','fifteenLines.txt'],fs);
+        const expectedOutput = '\t' + 14 + '\t' + 15 + '\t' + 35 + ' ' + 'fifteenLines.txt';
+      assert.deepEqual(actualOutput, expectedOutput)
+    });
+    it('should return only line count if -wcl option is given input', function(){
+        const actualOutput= wc(['-wcl','fifteenLines.txt'],fs);
+        const expectedOutput = '\t' + 14 + '\t' + 15 + '\t' + 35 + ' ' + 'fifteenLines.txt';
+      assert.deepEqual(actualOutput, expectedOutput)
+    });
+    it('should return only line count if -lwc option is given input', function(){
+        const actualOutput= wc(['-lwc','fifteenLines.txt'],fs);
+        const expectedOutput = '\t' + 14 + '\t' + 15 + '\t' + 35 + ' ' + 'fifteenLines.txt';
+      assert.deepEqual(actualOutput, expectedOutput)
+    });
+
  });

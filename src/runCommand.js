@@ -19,7 +19,7 @@ const formatter = function (counts) {
     const { lineCount, byteCount, wordCount, fileName } = counts;
     return [TAB, lineCount, TAB, wordCount, TAB, byteCount].join('') + ' ' + fileName;
 };
-const formatterForOneCounts = function (count, fileName) {
+const formatterForOneOption = function (count, fileName) {
     return [TAB, count].join('') + ' ' + fileName;
 };
 const availableOptions = {
@@ -31,12 +31,14 @@ const wc = function (userArgs, fs) {
     const input = parseInput(userArgs);
     const { option, fileNames } = input;
     const data = (getDetails(fileNames.join(''), fs));
-
-    if (input.option !== undefined) {
-        const inputOption = availableOptions[option];
-        return formatterForOneCounts(data[inputOption], fileNames);
+    const defaultCase = [undefined,"lcw", "lwc", "wcl", "wlc", "cwl","clw"]; // undefined -> not given 
+    if (defaultCase.includes(option)) {
+        return formatter(getDetails(fileNames.join(''), fs), fileNames.join(''));
     }
-    return formatter(getDetails(fileNames.join(''), fs), fileNames.join(''));
+    if (option !== undefined) {
+        const inputOption = availableOptions[option];
+        return formatterForOneOption(data[inputOption], fileNames);
+    }
 };
 
 module.exports = {
