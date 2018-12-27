@@ -210,13 +210,17 @@ describe('wc', function () {
         describe('multiple files', function () {
             it('should return only line count for two files if two files with option -l is given in input', function () {
                 const actualOutput = wc(['-l', 'fifteenLines.txt', 'fifteenLines.txt'], fs);
-                const expectedOutput = TAB + 14 + SPACE + 'fifteenLines.txt' + NEWLINE + TAB + 14 + SPACE + 'fifteenLines.txt';
-                assert.deepEqual(actualOutput, expectedOutput);
+                const expectedOutput = TAB + 14 + SPACE + 'fifteenLines.txt' + NEWLINE +
+                    TAB + 14 + SPACE + 'fifteenLines.txt' + NEWLINE +
+                    TAB + 28 + SPACE + 'total';
+                assert.equal(actualOutput, expectedOutput);
             });
             it('should return only counts for two files if two files with no option is given in input', function () {
                 const actualOutput = wc(['fifteenLines.txt', 'fifteenLines.txt'], fs);
-                const expectedOutput = TAB + 14 + TAB + 15 + TAB + 35 + SPACE + 'fifteenLines.txt' + NEWLINE + TAB + 14 + TAB + 15 + TAB + 35 + SPACE + 'fifteenLines.txt';
-                assert.deepEqual(actualOutput, expectedOutput);
+                const expectedOutput = TAB + 14 + TAB + 15 + TAB + 35 + SPACE + 'fifteenLines.txt' + NEWLINE +
+                    TAB + 14 + TAB + 15 + TAB + 35 + SPACE + 'fifteenLines.txt' + NEWLINE +
+                    TAB + 28 + TAB + 30 + TAB + 70 + SPACE + 'total';
+                assert.equal(actualOutput, expectedOutput);
             });
         });
     });

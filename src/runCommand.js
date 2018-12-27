@@ -17,31 +17,51 @@ const getDetails = function (fileName, fs) {
     return { fileName, contents, wordCount, byteCount, lineCount };
 };
 const formatter = function (fileName, option, fs) {
-    let output = "";
+    let output = [];
     const data = getDetails(fileName, fs);
 
     if (option.includes("l")) {
-        output = output + TAB + data["lineCount"];
+        output.push(data["lineCount"]);
     }
     if (option.includes("w")) {
-        output = output + TAB + data["wordCount"];
+        output.push(data["wordCount"]);
 
     }
     if (option.includes("c")) {
-        output = output + TAB + data["byteCount"];
+        output.push(data["byteCount"]);
     }
     if (option == "") {
-        output = output + TAB + data["lineCount"];
-        output = output + TAB + data["wordCount"];
-        output = output + TAB + data["byteCount"];
+        output.push(data["lineCount"]);
+        output.push(data["wordCount"]);
+        output.push(data["byteCount"]);
     }
-    return output + SPACE + fileName;
+ //   output.push(fileName);
+    return output;
+};
+const getTotal = function (list1, list2) {
+    let total = [];
+    for (let index = 0; index < list1.length; index++) {
+        total[index] = list1[index] + list2[index];
+    }
+    return total;
 };
 
+const joinWithTab = function (array) {
+    return "\t" +array.join("\t");
+};
 const wc = function (userArgs, fs) {
     const input = parseInput(userArgs);
     let { option, fileNames } = input;
-    return fileNames.map(file => formatter(file, option, fs)).join('\n');
+    let output = fileNames.map(file => formatter(file, option, fs));
+    if(fileNames.length > 1){
+        let total = output.reduce(getTotal);
+        output.push(total);
+    }
+    fileNames.push('total');
+    let index=0;
+    const joinedWithTabOutput = output.map(joinWithTab);
+    const countsWithFileNames = joinedWithTabOutput.map(x=>x.concat(" "+fileNames[index++])).join('\n');
+    return countsWithFileNames;
 };
 
 module.exports = {
