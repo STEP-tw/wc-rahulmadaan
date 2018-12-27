@@ -19,7 +19,7 @@ const getDetails = function (fileName, fs) {
 };
 const formatter = function (fileName, option, fs) {
     let output = "";
-    const data = getDetails(fileName.join(''), fs);
+    const data = getDetails(fileName, fs);
 
     if (option.includes("l")) {
         output = output + TAB + data["lineCount"];
@@ -42,12 +42,12 @@ const formatter = function (fileName, option, fs) {
 const wc = function (userArgs, fs) {
     if (userArgs.length == 0) {
         while (1) {
-          const noQuestion = readLine.question('');
+            const noQuestion = readLine.question('');
         }
-      }
+    }
     const input = parseInput(userArgs);
     let { option, fileNames } = input;
-    return formatter(fileNames, option, fs);
+    return fileNames.map(file => formatter(file, option, fs)).join('\n');
 };
 
 module.exports = {
