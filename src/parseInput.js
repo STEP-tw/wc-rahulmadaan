@@ -3,7 +3,7 @@ const hasOnlyFileNames = input => !input[0].includes("-");
 const getFileNames = userInput => userInput.filter(file => !file.startsWith("-"));
 const getOption = userInput => userInput.filter(file => file.startsWith("-"));
 
-const parseInput = function (args = []) {
+const parseInput = function (args) {
     let option, fileNames;
     if (hasOnlyFileNames(args)) {
         return { option: "", fileNames: args }

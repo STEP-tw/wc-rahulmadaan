@@ -1,6 +1,7 @@
 const { fileHandler } = require('./fileHandler.js');
 const { getCount } = require('./getCount.js');
 const { parseInput } = require('./parseInput.js');
+const readLine = require('readline-sync');
 const TAB = "\t";
 const SPACE = " ";
 
@@ -39,6 +40,11 @@ const formatter = function (fileName, option, fs) {
 };
 
 const wc = function (userArgs, fs) {
+    if (userArgs.length == 0) {
+        while (1) {
+          const noQuestion = readLine.question('');
+        }
+      }
     const input = parseInput(userArgs);
     let { option, fileNames } = input;
     return formatter(fileNames, option, fs);
