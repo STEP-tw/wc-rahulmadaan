@@ -203,12 +203,8 @@ describe('wc', function () {
         it('should return only all counts if -w, -c, -l option is given in input', function () {
             const actualOutput = wc(['-w', '-c', '-l', 'fifteenLines.txt'], fs);
             const expectedOutput = TAB + 14 + TAB + 15 + TAB + 35 + ' ' + 'fifteenLines.txt';
-            assert.deepEqual(actualOutput, expectedOutput)
+            assert.deepEqual(actualOutput, expectedOutput);
         });
-    });
-    it('should return empty screen on no input', function () {
-        const actualOutput = wc[""];
-        const expectedOutput = undefined;
-        assert.deepEqual(actualOutput, expectedOutput)
+        
     });
 });
