@@ -35,7 +35,7 @@ const formatter = function (fileName, option, fs) {
         output = output + TAB + data["wordCount"];
         output = output + TAB + data["byteCount"];
     }
-    return output + ' ' + fileName;
+    return output + SPACE + fileName;
 };
 
 const wc = function (userArgs, fs) {
