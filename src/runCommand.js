@@ -8,8 +8,6 @@ const getDetails = function (fileName, fs) {
     const fileDetails = fileHandler(fileName, fs);
     const counts = getCount(fileDetails.contents);
     if (!fileDetails.isFileExists) {
-        //     const contents = "wc: "+fileName+": open: No such file or directory";
-        //     return {contents}
         return 0;
     }
     const contents = fileDetails.contents;

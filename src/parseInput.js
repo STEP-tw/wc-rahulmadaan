@@ -1,4 +1,3 @@
-//const hasOption = input => input[0].includes("-");
 const hasOnlyFileNames = input => !input[0].includes("-");
 const getFileNames = userInput => userInput.filter(file => !file.startsWith("-"));
 const getOption = userInput => userInput.filter(file => file.startsWith("-"));

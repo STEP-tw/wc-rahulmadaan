@@ -4,6 +4,8 @@ const { parseInput } = require('../src/parseInput');
 const { wc } = require('../src/runCommand.js')
 const assert = require('assert');
 const TAB = "\t";
+const SPACE = " ";
+const NEWLINE = "\n";
 
 const fs = {};
 files = {
@@ -83,128 +85,139 @@ describe('parseInput', function () {
 describe('wc', function () {
     it('should return line,byte and word count for single file name given in input', function () {
         const actualOutput = wc(['fifteenLines.txt'], fs);
-        const expectedOutput = TAB + 14 + TAB + 15 + TAB + 35 + ' ' + 'fifteenLines.txt';
+        const expectedOutput = TAB + 14 + TAB + 15 + TAB + 35 + SPACE + 'fifteenLines.txt';
         assert.deepEqual(actualOutput, expectedOutput)
     });
     describe('for one option in input', function () {
         it('should return only line count if -l option is given in input', function () {
             const actualOutput = wc(['-l', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 14 + ' ' + 'fifteenLines.txt'
+            const expectedOutput = TAB + 14 + SPACE + 'fifteenLines.txt'
             assert.deepEqual(actualOutput, expectedOutput)
         });
         it('should return only word count if -w option is given in input', function () {
             const actualOutput = wc(['-w', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 15 + ' ' + 'fifteenLines.txt'
+            const expectedOutput = TAB + 15 + SPACE + 'fifteenLines.txt'
             assert.deepEqual(actualOutput, expectedOutput)
         });
         it('should return only line count if -l option is given in input', function () {
             const actualOutput = wc(['-c', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 35 + ' ' + 'fifteenLines.txt'
+            const expectedOutput = TAB + 35 + SPACE + 'fifteenLines.txt'
             assert.deepEqual(actualOutput, expectedOutput)
         });
     });
     describe('for multiple option in one argument in input', function () {
         it('should return only all counts if -lcw option is given in input', function () {
             const actualOutput = wc(['-lcw', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 14 + TAB + 15 + TAB + 35 + ' ' + 'fifteenLines.txt';
+            const expectedOutput = TAB + 14 + TAB + 15 + TAB + 35 + SPACE + 'fifteenLines.txt';
             assert.deepEqual(actualOutput, expectedOutput)
         });
         it('should return only all counts if -wlc option is given in input', function () {
             const actualOutput = wc(['-wlc', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 14 + TAB + 15 + TAB + 35 + ' ' + 'fifteenLines.txt';
+            const expectedOutput = TAB + 14 + TAB + 15 + TAB + 35 + SPACE + 'fifteenLines.txt';
             assert.deepEqual(actualOutput, expectedOutput)
         });
         it('should return only all counts if -wcl option is given in input', function () {
             const actualOutput = wc(['-wcl', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 14 + TAB + 15 + TAB + 35 + ' ' + 'fifteenLines.txt';
+            const expectedOutput = TAB + 14 + TAB + 15 + TAB + 35 + SPACE + 'fifteenLines.txt';
             assert.deepEqual(actualOutput, expectedOutput)
         });
         it('should return only all counts if -lwc option is given in input', function () {
             const actualOutput = wc(['-lwc', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 14 + TAB + 15 + TAB + 35 + ' ' + 'fifteenLines.txt';
+            const expectedOutput = TAB + 14 + TAB + 15 + TAB + 35 + SPACE + 'fifteenLines.txt';
             assert.deepEqual(actualOutput, expectedOutput)
         });
         it('should return only line and word count if -lw option is given in input', function () {
             const actualOutput = wc(['-lw', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 14 + TAB + 15 + ' ' + 'fifteenLines.txt';
+            const expectedOutput = TAB + 14 + TAB + 15 + SPACE + 'fifteenLines.txt';
             assert.deepEqual(actualOutput, expectedOutput)
         });
         it('should return only line and word count if -wl option is given in input', function () {
             const actualOutput = wc(['-wl', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 14 + TAB + 15 + ' ' + 'fifteenLines.txt';
+            const expectedOutput = TAB + 14 + TAB + 15 + SPACE + 'fifteenLines.txt';
             assert.deepEqual(actualOutput, expectedOutput)
         });
         it('should return only line and byte count if -cl option is given in input', function () {
             const actualOutput = wc(['-cl', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 14 + TAB + 35 + ' ' + 'fifteenLines.txt';
+            const expectedOutput = TAB + 14 + TAB + 35 + SPACE + 'fifteenLines.txt';
             assert.deepEqual(actualOutput, expectedOutput)
         });
         it('should return only line and byte count if -lc option is given in input', function () {
             const actualOutput = wc(['-lc', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 14 + TAB + 35 + ' ' + 'fifteenLines.txt';
+            const expectedOutput = TAB + 14 + TAB + 35 + SPACE + 'fifteenLines.txt';
             assert.deepEqual(actualOutput, expectedOutput)
         });
         it('should return only word and byte count if -wc option is given in input', function () {
             const actualOutput = wc(['-wc', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 15 + TAB + 35 + ' ' + 'fifteenLines.txt';
+            const expectedOutput = TAB + 15 + TAB + 35 + SPACE + 'fifteenLines.txt';
             assert.deepEqual(actualOutput, expectedOutput)
         });
         it('should return only word and byte count if -cw option is given in input', function () {
             const actualOutput = wc(['-cw', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 15 + TAB + 35 + ' ' + 'fifteenLines.txt';
+            const expectedOutput = TAB + 15 + TAB + 35 + SPACE + 'fifteenLines.txt';
             assert.deepEqual(actualOutput, expectedOutput)
         });
         it('should return only word count if -ww option is given in input', function () {
             const actualOutput = wc(['-ww', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 15 + ' ' + 'fifteenLines.txt';
+            const expectedOutput = TAB + 15 + SPACE + 'fifteenLines.txt';
             assert.deepEqual(actualOutput, expectedOutput)
         });
         it('should return only byte count if -cc option is given in input', function () {
             const actualOutput = wc(['-cc', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 35 + ' ' + 'fifteenLines.txt';
+            const expectedOutput = TAB + 35 + SPACE + 'fifteenLines.txt';
             assert.deepEqual(actualOutput, expectedOutput)
         });
         it('should return only line count if -ll option is given in input', function () {
             const actualOutput = wc(['-ll', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 14 + ' ' + 'fifteenLines.txt';
+            const expectedOutput = TAB + 14 + SPACE + 'fifteenLines.txt';
             assert.deepEqual(actualOutput, expectedOutput)
         });
         it('should return only word and byte count if -w,-c option is given in input', function () {
             const actualOutput = wc(['-w', '-c', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 15 + TAB + 35 + ' ' + 'fifteenLines.txt';
+            const expectedOutput = TAB + 15 + TAB + 35 + SPACE + 'fifteenLines.txt';
             assert.deepEqual(actualOutput, expectedOutput)
         });
 
         it('should return only word and byte count if -c,-w option is given in input', function () {
             const actualOutput = wc(['-c', '-w', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 15 + TAB + 35 + ' ' + 'fifteenLines.txt';
+            const expectedOutput = TAB + 15 + TAB + 35 + SPACE + 'fifteenLines.txt';
             assert.deepEqual(actualOutput, expectedOutput)
         });
         it('should return only word count if -w,-w option is given in input', function () {
             const actualOutput = wc(['-w', '-w', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 15 + ' ' + 'fifteenLines.txt';
+            const expectedOutput = TAB + 15 + SPACE + 'fifteenLines.txt';
             assert.deepEqual(actualOutput, expectedOutput)
         });
         it('should return only byte count if -c,-c option is given in input', function () {
             const actualOutput = wc(['-c', '-c', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 35 + ' ' + 'fifteenLines.txt';
+            const expectedOutput = TAB + 35 + SPACE + 'fifteenLines.txt';
             assert.deepEqual(actualOutput, expectedOutput)
         });
         it('should return only all counts if -l, -c, -w option is given in input', function () {
             const actualOutput = wc(['-l', '-c', '-w', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 14 + TAB + 15 + TAB + 35 + ' ' + 'fifteenLines.txt';
+            const expectedOutput = TAB + 14 + TAB + 15 + TAB + 35 + SPACE + 'fifteenLines.txt';
             assert.deepEqual(actualOutput, expectedOutput)
         });
         it('should return only all counts if -w, -l, -c option is given in input', function () {
             const actualOutput = wc(['-w', '-l', '-c', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 14 + TAB + 15 + TAB + 35 + ' ' + 'fifteenLines.txt';
+            const expectedOutput = TAB + 14 + TAB + 15 + TAB + 35 + SPACE + 'fifteenLines.txt';
             assert.deepEqual(actualOutput, expectedOutput)
         });
         it('should return only all counts if -w, -c, -l option is given in input', function () {
             const actualOutput = wc(['-w', '-c', '-l', 'fifteenLines.txt'], fs);
-            const expectedOutput = TAB + 14 + TAB + 15 + TAB + 35 + ' ' + 'fifteenLines.txt';
+            const expectedOutput = TAB + 14 + TAB + 15 + TAB + 35 + SPACE + 'fifteenLines.txt';
             assert.deepEqual(actualOutput, expectedOutput);
         });
-        
+        describe('multiple files', function () {
+            it('should return only line count for two files if two files with option -l is given in input', function () {
+                const actualOutput = wc(['-l', 'fifteenLines.txt', 'fifteenLines.txt'], fs);
+                const expectedOutput = TAB + 14 + SPACE + 'fifteenLines.txt' + NEWLINE + TAB + 14 + SPACE + 'fifteenLines.txt';
+                assert.deepEqual(actualOutput, expectedOutput);
+            });
+            it('should return only counts for two files if two files with no option is given in input', function () {
+                const actualOutput = wc(['fifteenLines.txt', 'fifteenLines.txt'], fs);
+                const expectedOutput = TAB + 14 + TAB + 15 + TAB + 35 + SPACE + 'fifteenLines.txt' + NEWLINE + TAB + 14 + TAB + 15 + TAB + 35 + SPACE + 'fifteenLines.txt';
+                assert.deepEqual(actualOutput, expectedOutput);
+            });
+        });
     });
 });
