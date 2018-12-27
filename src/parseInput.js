@@ -9,7 +9,7 @@ const parseInput = function (args = []) {
         return { option, fileNames }
     }
     if (hasOnlyFileNames(args)) {
-        return { option, fileNames: args }
+        return { option : "", fileNames: args }
     }
     
 };

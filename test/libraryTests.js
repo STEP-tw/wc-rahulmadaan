@@ -60,12 +60,12 @@ describe('parseInput', function () {
     });
     it('should return only file name if no option is given as input', function () {
         const actualOutput = parseInput(['file1']);
-        const expectedOutput = { option: undefined, fileNames: ['file1'] }
+        const expectedOutput = { option: "", fileNames: ['file1'] }
         assert.deepEqual(actualOutput, expectedOutput)
     });
     it('should return multiple file names if multiple file names are given as input with no option', function () {
         const actualOutput = parseInput(['file1', 'file2', 'file3']);
-        const expectedOutput = { option: undefined, fileNames: ['file1', 'file2', 'file3'] };
+        const expectedOutput = { option: "", fileNames: ['file1', 'file2', 'file3'] };
         assert.deepEqual(actualOutput, expectedOutput)
     });
     it('should return parse multiple file names along with one option given in input', function () {
@@ -75,7 +75,7 @@ describe('parseInput', function () {
     });
     it('should return no option and fileNames if no input is given', function () {
         const actualOutput = parseInput(['']);
-        const expectedOutput = { option: undefined, fileNames: [''] };
+        const expectedOutput = { option: "", fileNames: [''] };
         assert.deepEqual(actualOutput, expectedOutput);
     });
 });
