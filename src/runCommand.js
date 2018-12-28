@@ -7,9 +7,6 @@ const SPACE = " ";
 const getDetails = function (fileName, fs) {
     const fileDetails = fileHandler(fileName, fs);
     const counts = getCount(fileDetails.contents);
-    if (!fileDetails.isFileExists) {
-        return 0;
-    }
     const contents = fileDetails.contents;
     const wordCount = counts.wordCount;
     const byteCount = counts.byteCount;
